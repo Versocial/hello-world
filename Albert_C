@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+long long int C(long long int ,long long int );
+//int jiecheng(int );
+
+int main ()
+{
+ THESTART:;	
+ long long int m,n,k;
+ printf("请输入2到1e15的数：");
+ scanf("%d",&m); 
+  
+ for(n=2;n<m;n++)
+  {  
+     for(k=2;k<n-1;k++)
+     {
+	 if(C(n,k)==m)
+     printf  ("C(%d，%d)=%d\n",n,k,m);
+	 }; 
+  }	 
+	  printf  ("C(%d，%d)=%d\n",m,1,m);
+	  printf  ("C(%d，%d)=%d\n",m,m-1,m);
+    printf("over");
+	system("pause");
+	goto THESTART;
+	return 0;
+}
+
+
+/*
+
+int C(int n,int k)
+{
+	return jiecheng(n)/(jiecheng(n-k)*jiecheng(k)); 	
+}
+
+
+
+
+int jiecheng(int x)
+    {     
+     int jiec=1;
+	while(x!=0){jiec*=x;x--;}
+	return jiec;
+	}
+
+ */   //错误int值阶乘易溢出/
+ long long int C(long long int n,long long int k)
+ {
+ 	double c=1.0;
+ 	for(;k>0;k--,n--)
+	 {
+	 	c*=(double)n/(double)k;
+	 }
+	 return (long long int)(c+0.5);
+ }
